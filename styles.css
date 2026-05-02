@@ -1,0 +1,371 @@
+/* ----------------------------------------
+   Global Styles & Font
+---------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Condensed:ital,wght@0,600;0,700;1,600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #0a1114;
+  --text-main: #fcfcfc;
+  --accent-gold: #f2b84b;
+  --gradient-orange: #ef5734;
+  --gradient-red: #d32f2f;
+  --gradient-yellow: #ffb74d;
+}
+
+html, body {
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 85% 30%, rgba(239, 87, 52, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 10% 60%, rgba(242, 184, 75, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(211, 47, 47, 0.15) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* Base text styles */
+p, li {
+  line-height: 1.5;
+}
+
+a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+/* Global Noise Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+
+/* Top Bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+/* ----------------------------------------
+   Hero Section
+---------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 3rem 4rem;
+  /* Complex radial gradient mimicking the poster */
+  background: radial-gradient(circle at 20% 70%, rgba(242,184,75,0.8) 0%, rgba(239,87,52,0.9) 25%, rgba(211,47,47,0.7) 50%, transparent 80%);
+}
+
+.hero-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-family: 'Times New Roman MT Condensed', 'Cormorant Condensed', 'Times New Roman', serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+}
+
+.title .highlight {
+  font-family: 'Times New Roman MT Condensed', 'Cormorant Condensed', 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent-gold);
+}
+
+.speaker-info {
+  margin-bottom: 2rem;
+}
+
+.speaker-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.speaker-role {
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.details-list {
+  list-style: none;
+  margin-bottom: 4rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.details-list li {
+  margin-bottom: 0.4rem;
+}
+
+.details-list strong {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-right: 0.3rem;
+}
+
+.hero-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+  margin-top: auto;
+}
+
+.register-info p {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.register-info .link-url {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.register-btn {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 50px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  background: var(--text-main);
+  color: var(--gradient-orange);
+}
+
+/* ----------------------------------------
+   Other Sections (Vision, Program, Contact)
+---------------------------------------- */
+.section-title {
+  font-family: 'Times New Roman MT Condensed', 'Cormorant Condensed', 'Times New Roman', serif;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--accent-gold);
+}
+
+.vision, .program, .contact {
+  padding: 6rem 3rem;
+}
+
+.vision-container, .program-container, .contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.vision-container, .contact-container {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+.vision-text {
+  flex: 1;
+}
+
+.vision-text p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.solid-btn {
+  display: inline-block;
+  background: var(--gradient-orange);
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.solid-btn:hover {
+  background: var(--accent-gold);
+  color: var(--bg-dark);
+}
+
+.vision-image {
+  flex: 1;
+}
+
+.vision-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.program .schedule {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+}
+
+.slot {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease;
+}
+
+.slot:hover {
+  border-top-color: var(--accent-gold);
+}
+
+.slot .time {
+  font-family: 'Times New Roman MT Condensed', 'Cormorant Condensed', 'Times New Roman', serif;
+  font-size: 2.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.slot h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: var(--text-main);
+}
+
+.slot p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.contact-info a {
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: var(--accent-gold);
+}
+
+.map {
+  flex: 1;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ----------------------------------------
+   Responsive Adjustments
+---------------------------------------- */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .hero {
+    padding: 6rem 1.5rem 3rem;
+  }
+  
+  .hero-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .vision-container, .contact-container {
+    flex-direction: column;
+  }
+  
+  .vision, .program, .contact {
+    padding: 4rem 1.5rem;
+  }
+}
+
+/* ----------------------------------------
+   Scroll Animations
+---------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Specific hover overrides so animation doesn't break hover state */
+.slot.active {
+  transition: opacity 0.8s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.slot.active:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Stagger effect for program slots */
+.schedule .slot:nth-child(1).reveal { transition-delay: 0.1s; }
+.schedule .slot:nth-child(2).reveal { transition-delay: 0.2s; }
+.schedule .slot:nth-child(3).reveal { transition-delay: 0.3s; }
