@@ -10,5 +10,11 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
+  ],
+  "routes": [
+    {
+      "pattern": "chvaly.sizej.eu",
+      "custom_domain": true
+    }
   ]
 }
