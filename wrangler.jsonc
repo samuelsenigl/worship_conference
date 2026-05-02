@@ -13,7 +13,7 @@
   ],
   "routes": [
     {
-      "pattern": "chvaly.sizej.eu",
+      "pattern": "konference.sizej.eu",
       "custom_domain": true
     }
   ]
