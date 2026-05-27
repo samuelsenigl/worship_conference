@@ -55,6 +55,21 @@ body::before {
   mix-blend-mode: overlay;
 }
 
+/* Cursor Follower */
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242,184,75,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 99; /* Below noise, above most things */
+  transform: translate(-50%, -50%); /* initial offset, javascript overrides this but keeps the offset */
+  mix-blend-mode: screen;
+}
+
 /* Top Bar */
 .top-bar {
   display: flex;
@@ -110,6 +125,7 @@ body::before {
   font-style: italic;
   font-weight: 600;
   color: var(--accent-gold);
+  text-shadow: 0 0 25px rgba(242,184,75,0.3);
 }
 
 .speaker-info {
@@ -241,6 +257,11 @@ body::before {
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+.vision-image img:hover {
+  box-shadow: 0 30px 60px rgba(0,0,0,0.7);
 }
 
 .program .schedule {
