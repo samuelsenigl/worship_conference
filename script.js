@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealElements = document.querySelectorAll('.reveal');
 
   const revealOptions = {
-    threshold: 0.15, // Trigger when 15% of the element is visible
+    threshold: 0.15,
     rootMargin: "0px 0px -50px 0px"
   };
 
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       } else {
         entry.target.classList.add('active');
-        observer.unobserve(entry.target); // Stop observing once revealed
+        observer.unobserve(entry.target);
       }
     });
   }, revealOptions);
@@ -22,4 +22,34 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => {
     revealOnScroll.observe(el);
   });
+
+  // --- New Features: Cursor Follower, Parallax & Interactive Elements ---
+  const cursorFollower = document.querySelector('.cursor-follower');
+  const heroContent = document.querySelector('.hero-content');
+  const visionImage = document.querySelector('.vision-image img');
+  
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let followerX = window.innerWidth / 2;
+  let followerY = window.innerHeight / 2;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Smooth follow for cursor glow
+  function animateCursor() {
+    followerX += (mouseX - followerX) * 0.08;
+    followerY += (mouseY - followerY) * 0.08;
+    
+    if (cursorFollower) {
+      cursorFollower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
+    }
+    
+    requestAnimationFrame(animateCursor);
+  }
+  
+  animateCursor();
+
 });
